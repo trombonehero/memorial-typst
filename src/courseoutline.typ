@@ -9,6 +9,8 @@
 // A moderate highlight (in Memorial Claret)
 //
 #let head(singular, plural: none, n: 1) = {
+  set text(font: fonts.accent, weight: 600, size: 9pt)
+
   let content = if n > 1 and plural != none {
     plural
   } else if n == 1 {
@@ -28,13 +30,13 @@
       #letterhead.header(course.unit, text(fill: colours.claret, size: 14pt, weight: 800, course.full_name))
     ]
     #h(1fr)
-    #box(baseline: 0%)[
+    #box(baseline: 0%, text(font: fonts.accent, size: 9pt, weight: 200)[
       Course Outline
       \
       #course.code
 
       #course.semester
-    ]
+    ])
   ])
 ]
 
@@ -45,7 +47,11 @@
     header: locate(
       loc => if loc.page() > 1 {
          h(1fr)
-         text(fill: colours.claret, style: "italic")[
+         text(font: fonts.accent,
+              weight: 200,
+              size: 9pt,
+              fill: colours.claret,
+              style: "italic")[
            #course.full_name (#course.semester)
          ]
       }
