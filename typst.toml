@@ -1,0 +1,7 @@
+[package]
+name = "memorialu"
+version = "0.1.0"
+entrypoint = "src/lib.typ"
+authors = ["Jonathan Anderson"]
+license = "MIT"
+description = "Typst library for course outlines, memos, etc., at Memorial University"
