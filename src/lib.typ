@@ -4,6 +4,7 @@
 #import "colours.typ"
 #import "courseoutline.typ"
 #import "engineering.typ"
+#import "exam.typ"
 #import "faculties.typ"
 #import "fonts.typ"
 #import "letterhead.typ"
