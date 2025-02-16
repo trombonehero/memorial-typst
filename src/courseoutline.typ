@@ -191,7 +191,7 @@
   if calendar_description != none {
     cells.push(head("Calendar"))
     cells.push(cellx(colspan: 3)[
-      *#course.full_name* is #calendar_description
+      *#course.full_name* #calendar_description
     ])
   }
 
