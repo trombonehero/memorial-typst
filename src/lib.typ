@@ -7,4 +7,5 @@
 #import "faculties.typ"
 #import "fonts.typ"
 #import "letterhead.typ"
+#import "memo.typ"
 #import "logo.typ"
