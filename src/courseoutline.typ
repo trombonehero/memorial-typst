@@ -66,7 +66,6 @@
   show heading: it => {
     set text(fill: colours.claret, weight: 600)
 
-    v(.75em)
     counter(heading).display()
     " "
     it.body
