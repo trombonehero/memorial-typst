@@ -8,9 +8,9 @@
   #h(4.5pt)
   #box(
     text(fill: colours.neutral)[
-      #text(font: fonts.body, size: 11pt, weight: 600, faculty)
+      #text(font: fonts.body, size: 10pt, weight: 600, faculty)
 
-      #text(font: fonts.accent, size: 9pt, weight: 200, address)
+      #text(font: fonts.accent, size: 8pt, weight: 200, address)
     ]
   )
 ]
