@@ -79,7 +79,7 @@
   }
 
   show raw: content => text(font: "Inconsolata", content)
-  show link: content => text(font: "Inconsolata", size: .9em, content)
+  show link: content => text(fill: colours.claret, underline(content))
 
   title(course)
 
