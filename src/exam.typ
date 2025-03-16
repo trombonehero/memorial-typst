@@ -2,39 +2,7 @@
 #import "@preview/ttt-utils:0.1.2": random
 #import "colours.typ"
 #import "fonts.typ"
-#import "letterhead.typ"
-
-
-#let header(course, faculty, address, date, exam_kind: "Final exam") = {
-  grid(
-    columns: (1fr, 1fr),
-    gutter: 2em,
-    letterhead.header(faculty, address),
-    text(font: fonts.accent)[
-      #text(
-        fill: colours.claret,
-        weight: 800,
-        course.code + ": " + course.name
-      )
-
-      #text(weight: 200)[
-        #exam_kind
-        \
-        #date
-      ]
-
-      #text(size: 9pt, weight: 800)[
-        #box(stroke: 0.5pt, height: 3.5em, width: 1fr, inset: .5em)[Name:]
-
-        #v(-.5em)
-
-        #box(stroke: 0.5pt, height: 3.5em, width: 1fr, inset: .5em)[Student ID:]
-      ]
-    ],
-  )
-
-  v(1em)
-}
+#import "engineering.typ"
 
 
 #let assignment(body, ..args) = {
@@ -202,6 +170,26 @@
 }
 
 
+///
+/// Formatting details
+///
+#let guilloché = pattern(size: (20pt, 15pt))[
+  #set line(stroke: colours.neutral)
+
+  #place(line(stroke: .25pt, start: (0%, 0%), end: (100%, 100%)))
+  #place(line(stroke: .25pt, start: (0%, 100%), end: (100%, 0%)))
+
+  #place(line(stroke: .5pt, start: (0%, 50%), end: (50%, 0%)))
+  #place(line(stroke: .5pt, start: (50%, 0%), end: (100%, 50%)))
+
+  #place(line(stroke: .15pt, start: (0%, 25%), end: (25%, 0%)))
+  #place(line(stroke: .15pt, start: (0%, 75%), end: (75%, 0%)))
+  #place(line(stroke: .15pt, start: (25%, 100%), end: (100%, 25%)))
+  #place(line(stroke: .15pt, start: (75%, 100%), end: (100%, 75%)))
+]
+
+
+
 /// A horizontal points table
 #let points_table_h = {
   pad(
@@ -257,4 +245,63 @@
       )
     }
   )
+}
+
+
+#let cover-page(course, instructions,
+                date: datetime.today(),
+                exam_kind: "Final exam",
+                header: engineering.headers.ece) = {
+
+  context {
+    if not ttt-exam.is-solution-mode() {
+      grid(
+        columns: (1fr, 1fr),
+        gutter: 2em,
+        header,
+        text(font: fonts.accent)[
+          #text(
+            fill: colours.claret,
+            weight: 800,
+            course.code + ": " + course.name
+          )
+
+          #text(weight: 200)[
+            #exam_kind
+            \
+            #date
+          ]
+
+          #text(size: 9pt, weight: 800)[
+            #box(stroke: 0.5pt, height: 3.5em, width: 1fr, inset: .5em)[Name:]
+
+            #v(-.5em)
+
+            #box(stroke: 0.5pt, height: 3.5em, width: 1fr, inset: .5em)[Student ID:]
+          ]
+        ],
+      )
+
+      v(1em)
+
+      [
+        == Instructions
+
+        #instructions
+
+        #align(center, points_table_h)
+      ]
+
+      pagebreak()
+
+      rect(
+        fill: guilloché,
+        height: 100%,
+        width: 100%,
+        stroke: 0.25pt + colours.neutral,
+      )
+
+      pagebreak()
+    }
+  }
 }
