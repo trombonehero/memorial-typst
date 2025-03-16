@@ -180,7 +180,17 @@
 }
 
 #let answerlines(body, lines: 1, workings: none) = {
-  answer(body, field: ttt-exam.lines(lines), workings: workings)
+  let stroke_style = (
+    dash: "dotted",
+    paint: black.lighten(20%),
+    thickness: 0.5pt,
+  )
+
+  let blank_lines = for _ in range(lines) {
+      block(above: 0.7cm, line(length:100%, stroke: stroke_style))
+  }
+
+  answer(body, field: blank_lines, workings: workings)
 }
 
 
