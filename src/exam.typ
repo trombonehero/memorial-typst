@@ -91,7 +91,8 @@
   box(ttt-exam.assignments.answer(body, ..args))
 }
 
-#let answerbox(body, height: 3em, width: 8em, label: none, workings: none, ..args) = {
+#let answerbox(body, height: 3em, width: 8em, prespacing: 1fr, label: none,
+               workings: none, ..args) = {
   if workings != none [
     *Workings:*
     #v(workings)
@@ -103,7 +104,7 @@
   if label != none {
     return grid(
       align: horizon,
-      columns: (1fr, auto, width),
+      columns: (prespacing, auto, width),
       gutter: .5em,
       [], [#label:], answerbox(height: height, width: 100%)[],
     )
@@ -112,7 +113,7 @@
   ttt-exam.assignments.answer(
     body,
     field: {
-      h(1fr)
+      h(prespacing)
       box(
         height: height,
         width: width,
@@ -124,7 +125,7 @@
 }
 
 
-#let answerline(body, width: 12em, workings: none, ..args) = {
+#let answerline(body, width: 12em, prespacing: 1fr, workings: none, ..args) = {
   if workings != none [
     *Workings:*
     #v(workings)
@@ -136,7 +137,7 @@
   ttt-exam.assignments.answer(
     body,
     field: {
-      h(1fr)
+      h(prespacing)
       box(
         height: 1em,
         width: width,
