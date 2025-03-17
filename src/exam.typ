@@ -125,6 +125,12 @@
 }
 
 
+#let answer_line_style = (
+  dash: "dotted",
+  paint: black.lighten(20%),
+  thickness: 0.5pt,
+)
+
 #let answerline(body, width: 12em, prespacing: 1fr, workings: none, ..args) = {
   if workings != none [
     *Workings:*
@@ -141,7 +147,7 @@
       box(
         height: 1em,
         width: width,
-        stroke: (bottom: .5pt),
+        stroke: (bottom: answer_line_style),
       )
     },
     ..args,
@@ -149,14 +155,8 @@
 }
 
 #let answerlines(body, lines: 1, workings: none) = {
-  let stroke_style = (
-    dash: "dotted",
-    paint: black.lighten(20%),
-    thickness: 0.5pt,
-  )
-
   let blank_lines = for _ in range(lines) {
-      block(above: 0.7cm, line(length:100%, stroke: stroke_style))
+      block(above: 0.7cm, line(length:100%, stroke: answer_line_style))
   }
 
   answer(body, field: blank_lines, workings: workings)
